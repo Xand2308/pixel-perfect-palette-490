@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
-import { ArrowLeft, ArrowRight, ArrowUp, Bone, Cat, Check, ChevronDown, Dog, Heart, House, Mail, MapPin, Menu, Phone, Play, Scissors, ShieldPlus, ShoppingBag, Stethoscope, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUp, Bone, Cat, Check, ChevronDown, Dog, House, Mail, MapPin, Menu, Phone, Play, Scissors, ShieldPlus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroDog from "@/assets/hero-dog.jpg";
 import aboutDogs from "@/assets/about-dogs.jpg";
@@ -59,7 +59,7 @@ function Index() {
   const [subscribed, setSubscribed] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
   const [email, setEmail] = useState("");
-  const visibleProducts = Array.from({ length: 4 }, (_, i) => products[(productStart + i) % products.length]);
+  const visibleProducts = Array.from({ length: 4 }, (_, i) => products[(productStart + i) % products.length]).filter((product): product is (typeof products)[number] => product !== undefined);
   const team = ["SOPHIE", "EMILY", "OLIVIA", "CHARLOTTE"];
   const testimonials = [
     { quote: "Our dogs adore coming here. The team is so caring and attentive, and we always know our best friends are in wonderful hands.", name: "CLIENT NAME" },
@@ -99,7 +99,7 @@ function Index() {
 
         <section id="pricing" className="content-container section-block"><SectionHeading label="PRICING PLAN">COMPETITIVE PRICING<br />FOR PET SERVICES</SectionHeading><div className="pricing-grid">{plans.map((plan) => <article className={`price-card ${plan.name === "STANDARD" ? "featured" : ""}`} key={plan.name}><div className="price-heading"><h3>{plan.name}</h3><small>The Best Choice</small></div><div className="price-strip"><sup>$</sup>{plan.price}<span>/ Mo</span></div><ul>{featureNames.map((feature, i) => <li key={feature}>{feature}{plan.features[i] ? <Check size={16} className="included" /> : <X size={15} className="excluded" />}</li>)}</ul><Button variant="square" onClick={() => { setSelectedPlan(plan.name); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}>ORDER NOW</Button></article>)}</div></section>
 
-        <section id="team" className="content-container section-block"><SectionHeading label="TEAM MEMBERS">QUALIFIED PETS CARE<br />PROFESSIONALS</SectionHeading><div className="team-wrap"><div className="team-grid">{Array.from({ length: 4 }, (_, i) => { const index = (teamStart + i) % 4; return <article className="team-card" key={i}><div className="team-photo" style={{ backgroundImage: `url(${teamGrid})`, backgroundPosition: `${index * 33.333}% center` }} role="img" aria-label={`${team[index]} with a pet`} /><div><h3>{team[index]}</h3><span>Pet Care Specialist</span></div></article>; })}</div><div className="team-controls"><Button variant="square" size="icon" aria-label="Previous team members" onClick={() => setTeamStart((teamStart + 3) % 4)}><ArrowLeft /></Button><Button variant="square" size="icon" aria-label="Next team members" onClick={() => setTeamStart((teamStart + 1) % 4)}><ArrowRight /></Button></div></div></section>
+        <section id="team" className="content-container section-block"><SectionHeading label="TEAM MEMBERS">QUALIFIED PETS CARE<br />PROFESSIONALS</SectionHeading><div className="team-wrap"><div className="team-grid">{Array.from({ length: 4 }, (_, i) => { const index = (teamStart + i) % 4; return <article className="team-card" key={i}><div className="team-photo" style={{ backgroundImage: `url(${teamGrid})`, backgroundPosition: `${index * 33.333}% center` }} role="img" aria-label={`${team[index] ?? "Pet care professional"} with a pet`} /><div><h3>{team[index] ?? "Pet care professional"}</h3><span>Pet Care Specialist</span></div></article>; })}</div><div className="team-controls"><Button variant="square" size="icon" aria-label="Previous team members" onClick={() => setTeamStart((teamStart + 3) % 4)}><ArrowLeft /></Button><Button variant="square" size="icon" aria-label="Next team members" onClick={() => setTeamStart((teamStart + 1) % 4)}><ArrowRight /></Button></div></div></section>
 
         <section className="testimonial-banner"><img src={testimonialCorgi} alt="Happy corgi in a sunny garden" width={1920} height={640} loading="lazy" /><div className="content-container testimonial-inner"><div className="quote-card"><div className="quote-avatar">🐶</div><div className="quote-row"><Button variant="square" size="icon" aria-label="Previous testimonial" onClick={() => setTestimonial((testimonial + 1) % 2)}><ArrowLeft /></Button><p>{testimonials[testimonial].quote}</p><Button variant="square" size="icon" aria-label="Next testimonial" onClick={() => setTestimonial((testimonial + 1) % 2)}><ArrowRight /></Button></div><h3>{testimonials[testimonial].name}</h3><small>Pet Owner</small></div></div></section>
 
