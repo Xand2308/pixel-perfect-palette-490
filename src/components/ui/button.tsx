@@ -16,12 +16,15 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        heroOutline: "rounded-none border border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-foreground text-xs font-bold px-7 h-10",
+        heroOutline:
+          "rounded-none border border-primary-foreground bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-foreground text-xs font-bold px-7 h-10",
         play: "rounded-full bg-background text-primary hover:bg-accent shadow-lg size-12",
-        square: "rounded-none bg-primary text-primary-foreground hover:bg-primary/85 text-xs font-bold px-5 h-9",
+        square:
+          "rounded-none bg-primary text-primary-foreground hover:bg-primary/85 text-xs font-bold px-5 h-9",
         sale: "rounded-none bg-background text-foreground hover:bg-accent text-xs font-bold px-7 h-10",
         tab: "rounded-none bg-muted text-primary hover:bg-accent text-xs font-bold h-9",
-        tabActive: "rounded-none bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-bold h-9",
+        tabActive:
+          "rounded-none bg-primary text-primary-foreground hover:bg-primary/90 text-xs font-bold h-9",
         iconPlain: "rounded-none bg-transparent text-foreground hover:bg-muted",
       },
       size: {
