@@ -158,7 +158,7 @@ function Index() {
               <House size={26} />
               <span>🐾</span>
             </span>{" "}
-            PET SHOP
+            CARINHA DE PET
           </a>
           <Button
             variant="iconPlain"
@@ -198,10 +198,10 @@ function Index() {
           <div className="hero-shade" />
           <div className="content-container hero-content">
             <h1>CARINHA DE PET</h1>
-            <h2>MAKE YOUR PETS HAPPY</h2>
+            <h2>FAÇA SEUS PETS FELIZES</h2>
             <p>
-              Dedicated to caring for the companions who make life brighter. Everything your pet
-              needs, all in one happy place.
+              Dedicado a cuidar dos companheiros que tornam a vida mais luminosa. Tudo o que seu pet
+              precisa, tudo em um lugar feliz..
             </p>
             <div className="hero-actions">
               <Button
